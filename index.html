@@ -42,7 +42,7 @@
             width: 100%;
         }
         #td_btn_erase_last, #td_btn_clear {
-            width: 40px; /* Set the width just enough to fit the SVG buttons */
+            width: 40px;
         }
     </style>
 </head>
@@ -79,132 +79,169 @@
 <table id="dynamicTable"></table>
 
 <script>
-    const data = [
+    var data = [
         {
             tableRow: 1,
             tableColumn: 1,
-            picture: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
-                        <circle cx="50" cy="50" r="45" stroke="black" stroke-width="2" fill="yellow"/>
-                        <circle cx="30" cy="35" r="5" fill="black"/>
-                        <circle cx="70" cy="35" r="5" fill="black"/>
-                        <path d="M30,60 Q50,80 70,60" stroke="black" stroke-width="2" fill="transparent"/>
-                      </svg>`,
+            picture: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">' +
+                     '<circle cx="50" cy="50" r="45" stroke="black" stroke-width="2" fill="yellow"/>' +
+                     '<circle cx="30" cy="35" r="5" fill="black"/>' +
+                     '<circle cx="70" cy="35" r="5" fill="black"/>' +
+                     '<path d="M30,60 Q50,80 70,60" stroke="black" stroke-width="2" fill="transparent"/>' +
+                     '</svg>',
             word: "Smiling face",
             category: "Emotions"
         },
         {
             tableRow: 1,
             tableColumn: 2,
-            picture: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
-                        <circle cx="50" cy="50" r="45" stroke="black" stroke-width="2" fill="yellow"/>
-                        <circle cx="30" cy="35" r="5" fill="black"/>
-                        <circle cx="70" cy="35" r="5" fill="black"/>
-                        <path d="M30,70 Q50,50 70,70" stroke="black" stroke-width="2" fill="transparent"/>
-                      </svg>`,
+            picture: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">' +
+                     '<circle cx="50" cy="50" r="45" stroke="black" stroke-width="2" fill="yellow"/>' +
+                     '<circle cx="30" cy="35" r="5" fill="black"/>' +
+                     '<circle cx="70" cy="35" r="5" fill="black"/>' +
+                     '<path d="M30,70 Q50,50 70,70" stroke="black" stroke-width="2" fill="transparent"/>' +
+                     '</svg>',
             word: "Sad face",
             category: "Emotions"
         },
         {
             tableRow: 2,
             tableColumn: 1,
-            picture: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
-                        <rect x="20" y="30" width="60" height="40" stroke="black" stroke-width="2" fill="lightblue"/>
-                        <polygon points="30,50 50,70 70,50" fill="black"/>
-                      </svg>`,
+            picture: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">' +
+                     '<rect x="20" y="30" width="60" height="40" stroke="black" stroke-width="2" fill="lightblue"/>' +
+                     '<polygon points="30,50 50,70 70,50" fill="black"/>' +
+                     '</svg>',
             word: "I want",
             category: "Actions"
         },
         {
             tableRow: 2,
             tableColumn: 2,
-            picture: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
-                        <circle cx="50" cy="50" r="45" stroke="black" stroke-width="2" fill="lightblue"/>
-                        <circle cx="30" cy="35" r="5" fill="black"/>
-                        <circle cx="70" cy="35" r="5" fill="black"/>
-                      </svg>`,
+            picture: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">' +
+                     '<circle cx="50" cy="50" r="45" stroke="black" stroke-width="2" fill="lightblue"/>' +
+                     '<circle cx="30" cy="35" r="5" fill="black"/>' +
+                     '<circle cx="70" cy="35" r="5" fill="black"/>' +
+                     '</svg>',
             word: "We",
             category: "Pronouns"
         },
         {
             tableRow: 3,
             tableColumn: 1,
-            picture: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
-                        <circle cx="50" cy="50" r="45" stroke="black" stroke-width="2" fill="green"/>
-                        <polygon points="40,30 70,50 40,70" fill="white"/>
-                      </svg>`,
+            picture: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">' +
+                     '<circle cx="50" cy="50" r="45" stroke="black" stroke-width="2" fill="green"/>' +
+                     '<polygon points="40,30 70,50 40,70" fill="white"/>' +
+                     '</svg>',
             word: "Go",
             category: "Actions"
         },
         {
             tableRow: 3,
             tableColumn: 2,
-            picture: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
-                        <circle cx="50" cy="50" r="45" stroke="black" stroke-width="2" fill="lightgreen"/>
-                        <polyline points="30,50 45,70 70,30" stroke="black" stroke-width="4" fill="transparent"/>
-                      </svg>`,
+            picture: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">' +
+                     '<circle cx="50" cy="50" r="45" stroke="black" stroke-width="2" fill="lightgreen"/>' +
+                     '<polyline points="30,50 45,70 70,30" stroke="black" stroke-width="4" fill="transparent"/>' +
+                     '</svg>',
             word: "Yes",
             category: "Responses"
         },
         {
             tableRow: 4,
             tableColumn: 1,
-            picture: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
-                        <circle cx="50" cy="50" r="45" stroke="black" stroke-width="2" fill="red"/>
-                        <line x1="30" y1="30" x2="70" y2="70" stroke="black" stroke-width="4"/>
-                        <line x1="70" y1="30" x2="30" y2="70" stroke="black" stroke-width="4"/>
-                      </svg>`,
+            picture: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">' +
+                     '<circle cx="50" cy="50" r="45" stroke="black" stroke-width="2" fill="red"/>' +
+                     '<line x1="30" y1="30" x2="70" y2="70" stroke="black" stroke-width="4"/>' +
+                     '<line x1="70" y1="30" x2="30" y2="70" stroke="black" stroke-width="4"/>' +
+                     '</svg>',
             word: "No",
             category: "Responses"
         }
     ];
 
     // Get unique categories from the data
-    const categories = [...new Set(data.map(item => item.category))];
+    var categories = [];
+    for (var i = 0; i < data.length; i++) {
+        if (categories.indexOf(data[i].category) === -1) {
+            categories.push(data[i].category);
+        }
+    }
 
     // Initially selected category
-    let selectedCategory = categories[0];
+    var selectedCategory = categories[0];
 
-    const sentenceDiv = document.getElementById('td_sentence');
-    const tableCategories = document.getElementById('table_categories');
-    const tableData = document.getElementById('dynamicTable');
+    var sentenceDiv = document.getElementById('td_sentence');
+    var tableCategories = document.getElementById('table_categories');
+    var tableData = document.getElementById('dynamicTable');
 
     // Function to create the category table
     function createCategoryTable(categories) {
-        const row = document.createElement('tr');
-        categories.forEach(category => {
-            const cell = document.createElement('td');
-            cell.innerText = category;
-            cell.className = category === selectedCategory ? 'selected-category' : '';
-            cell.onclick = () => selectCategory(category);
+        var row = document.createElement('tr');
+        for (var i = 0; i < categories.length; i++) {
+            var cell = document.createElement('td');
+            cell.innerText = categories[i];
+            cell.className = categories[i] === selectedCategory ? 'selected-category' : '';
+            cell.onclick = (function(category) {
+                return function() {
+                    selectCategory(category);
+                };
+            })(categories[i]);
             row.appendChild(cell);
-        });
+        }
         tableCategories.appendChild(row);
     }
 
     // Function to select a category and update the data table
     function selectCategory(category) {
         selectedCategory = category;
-        document.querySelectorAll('#table_categories td').forEach(cell => {
-            cell.classList.toggle('selected-category', cell.innerText === category);
-        });
+        var cells = tableCategories.getElementsByTagName('td');
+        for (var i = 0; i < cells.length; i++) {
+            if (cells[i].innerText === category) {
+                cells[i].className = 'selected-category';
+            } else {
+                cells[i].className = '';
+            }
+        }
         updateDataTable();
     }
 
     // Function to update the data table based on the selected category
     function updateDataTable() {
         tableData.innerHTML = ''; // Clear the table content
-        const filteredData = data.filter(item => item.category === selectedCategory);
-        const rows = Math.max(...filteredData.map(item => item.tableRow));
-        const cols = Math.max(...filteredData.map(item => item.tableColumn));
+        var filteredData = [];
+        for (var i = 0; i < data.length; i++) {
+            if (data[i].category === selectedCategory) {
+                filteredData.push(data[i]);
+            }
+        }
+        var rows = 0;
+        var cols = 0;
+        for (i = 0; i < filteredData.length; i++) {
+            if (filteredData[i].tableRow > rows) {
+                rows = filteredData[i].tableRow;
+            }
+            if (filteredData[i].tableColumn > cols) {
+                cols = filteredData[i].tableColumn;
+            }
+        }
 
-        for (let i = 1; i <= rows; i++) {
-            const row = document.createElement('tr');
-            for (let j = 1; j <= cols; j++) {
-                const cellData = filteredData.find(item => item.tableRow === i && item.tableColumn === j);
-                const cell = document.createElement('td');
+        for (i = 1; i <= rows; i++) {
+            var row = document.createElement('tr');
+            for (var j = 1; j <= cols; j++) {
+                var cellData = null;
+                for (var k = 0; k < filteredData.length; k++) {
+                    if (filteredData[k].tableRow === i && filteredData[k].tableColumn === j) {
+                        cellData = filteredData[k];
+                        break;
+                    }
+                }
+                var cell = document.createElement('td');
                 if (cellData) {
-                    cell.innerHTML = cellData.picture + `<p>${cellData.word}</p>`;
-                    cell.onclick = () => appendWordToSentence(cellData.word);
+                    cell.innerHTML = cellData.picture + '<p>' + cellData.word + '</p>';
+                    cell.onclick = (function(word) {
+                        return function() {
+                            appendWordToSentence(word);
+                        };
+                    })(cellData.word);
                 }
                 row.appendChild(cell);
             }
@@ -214,14 +251,14 @@
 
     // Function to append the selected word to the sentenceDiv
     function appendWordToSentence(word) {
-        const wordSpan = document.createElement('span');
+        var wordSpan = document.createElement('span');
         wordSpan.innerText = word + ' ';
         sentenceDiv.appendChild(wordSpan);
     }
 
     // Function to erase the last word from the sentenceDiv
     function eraseLastWord() {
-        const lastWord = sentenceDiv.lastChild;
+        var lastWord = sentenceDiv.lastChild;
         if (lastWord) {
             sentenceDiv.removeChild(lastWord);
         }
