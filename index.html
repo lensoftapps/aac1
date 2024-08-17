@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2x2 Image Table</title>
+    <title>2x2 Image Table with Clickable Cells</title>
     <style>
         table {
             width: 50%;
@@ -14,7 +14,8 @@
         td {
             text-align: center;
             padding: 20px;
-            border: 2px solid #000;
+            border: 1px solid #000;
+            cursor: pointer; /* Cursor change to indicate clickability */
         }
         img {
             max-width: 100px;
@@ -26,32 +27,46 @@
             margin-top: 10px;
             font-size: 16px;
         }
+        #selected-word {
+            text-align: center;
+            font-size: 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
 
+<div id="selected-word">Click on a cell to display the word here</div>
+
 <table>
     <tr>
-        <td>
+        <td onclick="displayWord('Word 1')">
             <img src="img/01.JPG" alt="Image 1">
             <p>Word 1</p>
         </td>
-        <td>
+        <td onclick="displayWord('Word 2')">
             <img src="img/02.JPG" alt="Image 2">
             <p>Word 2</p>
         </td>
     </tr>
     <tr>
-        <td>
+        <td onclick="displayWord('Word 3')">
             <img src="img/03.JPG" alt="Image 3">
             <p>Word 3</p>
         </td>
-        <td>
+        <td onclick="displayWord('Word 4')">
             <img src="img/04.JPG" alt="Image 4">
             <p>Word 4</p>
         </td>
     </tr>
 </table>
+
+<script>
+    function displayWord(word) {
+        document.getElementById('selected-word').innerText = word;
+    }
+</script>
 
 </body>
 </html>
