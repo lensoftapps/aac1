@@ -32,6 +32,12 @@
             font-size: 20px;
             margin-bottom: 20px;
             font-weight: bold;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .word-item {
+            margin-right: 10px;
         }
     </style>
 </head>
@@ -41,30 +47,33 @@
 
 <table>
     <tr>
-        <td onclick="displayWord('Word 1')">
+        <td onclick="displayWord('You')">
             <img src="img/01.JPG" alt="Image 1">
-            <p>Word 1</p>
+            <p>You</p>
         </td>
-        <td onclick="displayWord('Word 2')">
+        <td onclick="displayWord('Help')">
             <img src="img/02.JPG" alt="Image 2">
-            <p>Word 2</p>
+            <p>Help</p>
         </td>
     </tr>
     <tr>
-        <td onclick="displayWord('Word 3')">
+        <td onclick="displayWord('Happy')">
             <img src="img/03.JPG" alt="Image 3">
-            <p>Word 3</p>
+            <p>Happy</p>
         </td>
-        <td onclick="displayWord('Word 4')">
+        <td onclick="displayWord('Sad')">
             <img src="img/04.JPG" alt="Image 4">
-            <p>Word 4</p>
+            <p>Sad</p>
         </td>
     </tr>
 </table>
 
 <script>
     function displayWord(word) {
-        document.getElementById('selected-word').innerText = word;
+        const wordDiv = document.createElement('span');
+        wordDiv.className = 'word-item';
+        wordDiv.innerText = word;
+        document.getElementById('selected-word').appendChild(wordDiv);
     }
 </script>
 
